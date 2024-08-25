@@ -128,6 +128,7 @@ body{
 
   #game-stats div {
     width: 17%;
+    user-select: none
   }
 
   #game-stats p {
@@ -142,9 +143,6 @@ body{
 
   .enemies-wrapper {
     top: 40px;
-    width: 35%;
-    left: 50%;
-    transform: translateX(-50%);
     position: absolute;
 
     display: grid;
@@ -159,11 +157,6 @@ body{
     width: 32px;
   }
 
-  /* .row {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-  } */
 
   .enemy-1 {
     background: url(enemyType1.png) no-repeat center;

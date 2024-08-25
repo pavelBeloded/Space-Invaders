@@ -5,7 +5,7 @@ playerScores = 0,
 playerLives = 3,
 playerRecord = 0
 const enemiesAmount = document.querySelectorAll('.enemy').length
-
+const enemiesWrapper = document.querySelector('.enemies-wrapper')
 
 
 
@@ -30,9 +30,10 @@ function playerShoot(){
 }
 
 let intervalId
+let enemyLiveAmount
 function selectEnemy() {
     clearInterval(intervalId)
-    let enemyLiveAmount = document.querySelectorAll('.enemy').length
+    enemyLiveAmount = document.querySelectorAll('.enemy').length
     
     if(enemyLiveAmount == 0) {
         gameOver('vic')
@@ -47,6 +48,7 @@ function selectEnemy() {
             }
         })
     },1000)
+    
 }
 
 let enemyBullet
@@ -182,15 +184,60 @@ function keyEvents(e) {
 }
 
 
+let timerId2
+let margin = 0
+
+// нормально не работает
+function enemiesMove(enemiesHorStep, enemiesVertStep, enemyLiveAmount, reverseMoveDir = 'left'){
+    margin += enemiesHorStep
+    enemiesWrapper.style[reverseMoveDir] = margin + 'px'
+    
+    enemiesWrapper.querySelectorAll('.enemy').forEach((enemy)=>{
+        if(window.innerWidth - enemy.getBoundingClientRect().right < enemiesHorStep) {
+            
+            let buf = reverseMoveDir == 'left'? 'right':'left'
+            reverseMoveDir = buf
+            enemiesWrapper.style[reverseMoveDir] = margin
+            enemiesWrapper.style.removeProperty(reverseMoveDir)
+            margin = 0
+
+        }
+    })
+
+
+    timerId2 = setTimeout(()=>{
+        enemiesMove(enemiesHorStep, enemiesVertStep, enemyLiveAmount, reverseMoveDir)
+    }, 1000)
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.querySelector('#start').addEventListener('click', ()=>{
+
+    let enemiesHorStep = (window.innerWidth - enemiesWrapper.offsetWidth) / 40
+    let enemiesVertStep = (enemiesWrapper.getBoundingClientRect().bottom - player.getBoundingClientRect().top) / 11
     selectEnemy()
+    
+    enemiesMove(enemiesHorStep, enemiesVertStep, enemyLiveAmount)
+
     document.querySelector('#start-screen').style.display = 'none'
     document.querySelector('#game-screen').style.display = 'block'
     document.addEventListener('click', playerShoot)
     document.addEventListener('keydown', keyEvents)
-
     document.addEventListener('mousemove', movePlayer)
+
 })
 
 document.querySelector('#tryagain').addEventListener('click', ()=>{
