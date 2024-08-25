@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chelsea+Market&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Space invaders</title>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div id="start-screen">
+        
+        <div class="game-name">
+            <div class="layer layer1">
+                SPACE<br>INVADERS
+            </div>
+            <div class="layer layer2">
+                SPACE<br>INVADERS
+            </div>
+            <div class="layer layer3">
+                SPACE<br>INVADERS
+            </div>
+        </div>
+
+        <div class="start">
+            <button id="start" type="button">START</button>
+        </div>
+
+        <div class="description">
+
+            <p>--------------------------</p>
+            <p>Мышка для движения<br>Клик/Пробел для выстрела</p>
+            <p>--------------------------</p>
+        </div>
+
+    </div>
+
+    <div id="game-screen">
+
+        <div id="game-stats">
+            <div id="score"><p>SCORE:<span>0</span></p></div>
+            <div id="level"><p>LEVEL:<span>1</span></p></div>
+            <div id="lives"><p>LIVES:<span>3</span></p></div>
+            <div id="record"><p>RECORD:<span>0</span></p></div>
+        </div>
+        <div id="enemies-zone">
+
+            <div class="enemies-wrapper">
+          
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+                    <div class="enemy enemy-3" data-type="3"></div>
+
+        
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+                    <div class="enemy enemy-2" data-type="2"></div>
+
+    
+                    <div class="enemy enemy-1" data-type="1"></div>
+                    <div class="enemy enemy-1" data-type="1"></div>
+                    <div class="enemy enemy-1" data-type="1"></div>
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>
+
+
+                    <div class="enemy enemy-1" data-type="1"></div>
+                    <div class="enemy enemy-1" data-type="1"></div>
+                    <div class="enemy enemy-1" data-type="1"></div>
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+                    <div class="enemy enemy-1" data-type="1"></div>                    
+
+
+
+            </div>
+
+
+            
+            
+            
+            <!-- <div class="enemy enemy-4" data-type="4"></div> -->
+
+        </div>
+        <div id="baricades"></div>
+            <div class="player" id="player">
+            </div>
+
+    </div>
+
+    <div id="end-screen">
+        <div class="endscreen-content">
+        <div class="end-title">GAME OVER</div>
+        <div class="endgame-results">
+            <div class="result-item"><p>--------------</p></div>
+            <div class="result-item" id="endgame-score"><p>SCORE:<span></span></p></div>
+            <div class="result-item" id="endgame-level"><p>LEVEL:<span>1</span></p></div>
+            <div class="result-item" id="endgame-record"><p>RECORD:<span></span></p></div>
+            <div class="result-item"><p>--------------</p></div>
+        </div>
+        <div class="tryagain-holder">
+            <button id="tryagain" type="button">TRY AGAIN</button>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
