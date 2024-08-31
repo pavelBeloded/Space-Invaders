@@ -187,26 +187,26 @@ function keyEvents(e) {
 let timerId2
 let margin = 0
 
-// нормально не работает
-function enemiesMove(enemiesHorStep, enemiesVertStep, enemyLiveAmount, reverseMoveDir = 'left'){
-    margin += enemiesHorStep
-    enemiesWrapper.style[reverseMoveDir] = margin + 'px'
-    
-    enemiesWrapper.querySelectorAll('.enemy').forEach((enemy)=>{
-        if(window.innerWidth - enemy.getBoundingClientRect().right < enemiesHorStep) {
-            
-            let buf = reverseMoveDir == 'left'? 'right':'left'
-            reverseMoveDir = buf
-            enemiesWrapper.style[reverseMoveDir] = margin
-            enemiesWrapper.style.removeProperty(reverseMoveDir)
-            margin = 0
 
+function enemiesMove(enemiesHorStep, enemiesVertStep, enemyLiveAmount, moveDir = 'left'){
+    if (moveDir == 'left') {
+    margin += enemiesHorStep
+    enemiesWrapper.style.left = margin + 'px'
+    } else if (moveDir == 'right') {
+        margin -= enemiesHorStep
+        enemiesWrapper.style.left = margin + 'px'    
+    }
+    enemiesWrapper.querySelectorAll('.enemy').forEach((enemy)=>{
+        if(window.innerWidth - enemy.getBoundingClientRect().right < 3*enemiesHorStep) {
+            moveDir = 'right'
+        } else if (enemy.getBoundingClientRect().left < 3*enemiesHorStep) {
+            moveDir = 'left' 
         }
     })
 
 
     timerId2 = setTimeout(()=>{
-        enemiesMove(enemiesHorStep, enemiesVertStep, enemyLiveAmount, reverseMoveDir)
+        enemiesMove(enemiesHorStep, enemiesVertStep, enemyLiveAmount, moveDir)
     }, 1000)
 
 
